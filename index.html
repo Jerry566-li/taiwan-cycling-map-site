@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="台湾顺时针环岛骑行地图。查看苏花公路、花东海岸与纵谷、南回公路、西岸骑行和台铁接驳。">
+  <title>台湾顺时针环岛骑行地图</title>
+  <link rel="stylesheet" href="./map.css">
+  <link rel="stylesheet" href="./site.css">
+  <script src="./d3.min.js" defer></script>
+  <script src="./map-data.js" defer></script>
+  <script src="./map.js" defer></script>
+</head>
+<body>
+  <header class="site-bar">
+    <div class="site-bar-inner">
+      <a class="site-brand" href="./" aria-label="台湾骑行地图首页">
+        <svg class="site-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M5.5 18.5 10 12l4 1 4.5-7.5" />
+          <circle cx="5.5" cy="18.5" r="2.4" />
+          <circle cx="18.5" cy="5.5" r="2.4" />
+        </svg>
+        <span>台湾骑行地图</span>
+      </a>
+      <span class="site-edition">TAIWAN BY BIKE</span>
+    </div>
+  </header>
+  <main class="site-main">
+    <section id="taiwan-cycle-nov26" aria-labelledby="twcycle-heading">
+  <header class="tw-title">
+    <h1 id="twcycle-heading">台湾顺时针环岛骑行</h1>
+    <p class="text-small text-muted">台北出发并返回 · 2026 年 11 月底 · 公路资料核对于 11 月 6 日</p>
+  </header>
+  <div class="viz-controls tw-controls">
+    <label class="form-label">查看区域
+      <select class="form-select" data-region>
+        <option value="all">台湾环岛总览</option>
+        <option value="north">台北 → 福隆 → 苏澳</option>
+        <option value="suhua">苏花公路 · 全段</option>
+        <option value="cliff">清水断崖 · 放大</option>
+        <option value="east">花莲 → 台东</option>
+        <option value="south">台东 → 垦丁 → 枋寮</option>
+        <option value="west">西岸 · 铁路与短骑</option>
+      </select>
+    </label>
+    <label class="form-label" data-suhua-control>苏花走法
+      <select class="form-select" data-suhua>
+        <option value="full">A · 旧路＋仁水，全段骑</option>
+        <option value="partial" selected>B · 骑到东澳，再搭台铁</option>
+        <option value="rail">C · 苏澳新搭台铁跨苏花</option>
+      </select>
+    </label>
+    <label class="form-label" data-east-control>花东走法
+      <select class="form-select" data-east>
+        <option value="compare">叠加比较所有候选</option>
+        <option value="valley">台9 · 花东纵谷</option>
+        <option value="coast">台11 · 太平洋海岸</option>
+        <option value="hybrid">台11＋台30玉长＋台9</option>
+      </select>
+    </label>
+  </div>
+  <div class="tw-map" data-map-panel>
+    <svg aria-label="台湾骑行与台铁路线地图" role="img"></svg>
+    <div class="tw-map-tools">
+      <div class="tw-zoom" role="group" aria-label="地图缩放与平移" aria-describedby="tw-map-hint">
+        <button type="button" class="btn" data-zoom-in aria-label="放大地图">＋</button>
+        <button type="button" class="btn" data-zoom-out aria-label="缩小地图">−</button>
+        <button type="button" class="btn" data-zoom-reset>还原</button>
+      </div>
+      <p class="tw-map-hint text-small" id="tw-map-hint">拖动平移 · 滚轮或双指缩放</p>
+    </div>
+  </div>
+  <div class="tw-legend text-small" aria-label="图例">
+    <span><i class="tw-swatch bike"></i>可骑公路</span>
+    <span><i class="tw-swatch rail"></i>台铁接驳</span>
+    <span><i class="tw-swatch alt"></i>候选骑行</span>
+    <span><i class="tw-swatch closed"></i>自行车禁行／废止</span>
+    <span><i class="tw-swatch check"></i>当天复核点</span>
+    <span><i class="tw-square"></i>台铁站</span>
+  </div>
+  <section class="card tw-details" aria-label="路线与景点详情">
+    <label class="form-label">路线、车站或景点
+      <select class="form-select" data-inspect></select>
+    </label>
+    <div class="tw-readout" aria-live="polite">
+      <h2 data-detail-title></h2>
+      <p data-detail-note></p>
+      <div class="text-small tw-links" data-detail-links></div>
+    </div>
+  </section>
+  <details class="tw-distances">
+    <summary>本视图各段距离</summary>
+    <ul data-distances></ul>
+  </details>
+  <p class="text-small text-muted tw-foot">浅灰公路用于定位，部分线位按官方里程点概绘。公里数按图资中心线取整，车站和景点短支线另计。出发当天请核对路况与携车名额。</p>
+  <p class="text-small tw-links tw-foot">
+    <a href="https://168.thb.gov.tw/" target="_blank" rel="noopener">公路局即时路况</a>
+    <a href="https://tip.railway.gov.tw/tra-tip-web/tip/tip00D/tipD11/goEmptySeat" target="_blank" rel="noopener">台铁自行车额度</a>
+    <a href="https://www.taroko.gov.tw/ch/trailsAttractions/trail-list" target="_blank" rel="noopener">太鲁阁步道开放</a>
+    <a href="https://data.gov.tw/dataset/73232" target="_blank" rel="noopener">道路图资</a>
+    <a href="https://data.gov.tw/dataset/7040" target="_blank" rel="noopener">公路里程点</a>
+    <a href="https://data.gov.tw/dataset/73220" target="_blank" rel="noopener">铁路图资</a>
+    <a href="https://github.com/g0v/twgeojson" target="_blank" rel="noopener">海岸底图</a>
+  </p>
+</section>
+    <noscript><p class="site-no-script">请在浏览器中启用 JavaScript 来查看交互地图。</p></noscript>
+  </main>
+</body>
+</html>

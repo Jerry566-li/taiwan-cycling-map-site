@@ -1,0 +1,34 @@
+#taiwan-cycle-nov26 { --track-bike: var(--green); --track-rail: var(--blue); --track-alt: var(--purple); --track-closed: var(--red); --track-check: var(--yellow); display:grid; gap:calc(var(--font-size-base) * .7); }
+#taiwan-cycle-nov26 .tw-title p { margin-top:calc(var(--font-size-base) * .25); }
+#taiwan-cycle-nov26 .tw-controls { gap:calc(var(--font-size-base) * .7); }
+#taiwan-cycle-nov26 .tw-controls label { min-width:0; }
+#taiwan-cycle-nov26 [hidden] { display:none !important; }
+#taiwan-cycle-nov26 .tw-map { min-width:0; position:relative; }
+#taiwan-cycle-nov26 .tw-map svg { display:block; width:100%; overflow:hidden; touch-action:none; cursor:grab; }
+#taiwan-cycle-nov26 .tw-map svg:active { cursor:grabbing; }
+#taiwan-cycle-nov26 .tw-map-tools { position:absolute; bottom:12px; right:12px; display:grid; gap:.35em; justify-items:end; pointer-events:none; }
+#taiwan-cycle-nov26 .tw-zoom { display:flex; gap:.3em; pointer-events:auto; }
+#taiwan-cycle-nov26 .tw-zoom button { background:var(--background); }
+#taiwan-cycle-nov26 .tw-map-hint { color:var(--muted-foreground); background:var(--background); padding:.2em .45em; border-radius:.25em; }
+#taiwan-cycle-nov26 .tw-map text { font-family:inherit; fill:var(--foreground); font-weight:500; font-size:max(11px, calc(var(--font-size-base) * .86)); user-select:none; paint-order:stroke; stroke:var(--background); stroke-width:3.5px; stroke-linejoin:round; }
+#taiwan-cycle-nov26 .tw-map .water-label { fill:var(--muted-foreground); letter-spacing:.16em; font-weight:400; stroke:none; }
+#taiwan-cycle-nov26 .tw-map .minor-label { font-weight:400; }
+#taiwan-cycle-nov26 .tw-map .context-label { fill:var(--muted-foreground); font-weight:400; stroke-width:2.5px; pointer-events:none; }
+#taiwan-cycle-nov26 .tw-map .context-ref { font-variant-numeric:tabular-nums; opacity:.8; }
+#taiwan-cycle-nov26 .tw-legend, #taiwan-cycle-nov26 .tw-links { display:flex; flex-wrap:wrap; gap:.35em 1.1em; }
+#taiwan-cycle-nov26 .tw-legend span { display:inline-flex; align-items:center; gap:.4em; }
+#taiwan-cycle-nov26 .tw-swatch { width:1.45em; border-top:3px solid var(--track-bike); }
+#taiwan-cycle-nov26 .tw-swatch.rail { border-color:var(--track-rail); border-top-style:dashed; }
+#taiwan-cycle-nov26 .tw-swatch.alt { border-color:var(--track-alt); border-top-style:dotted; }
+#taiwan-cycle-nov26 .tw-swatch.closed { border-color:var(--track-closed); border-top-style:dashed; }
+#taiwan-cycle-nov26 .tw-swatch.check { width:.7em; height:.7em; border:2px solid var(--track-check); border-radius:50%; }
+#taiwan-cycle-nov26 .tw-square { width:.64em; height:.64em; background:var(--track-rail); }
+#taiwan-cycle-nov26 .tw-details { display:grid; gap:calc(var(--font-size-base) * .6); }
+#taiwan-cycle-nov26 .tw-details .form-label { max-width:30rem; }
+#taiwan-cycle-nov26 .tw-readout { display:grid; gap:calc(var(--font-size-base) * .27); }
+#taiwan-cycle-nov26 .tw-distances ul { margin:.5em 0 0; padding-inline-start:1.4em; columns:2; }
+#taiwan-cycle-nov26 .tw-distances li { break-inside:avoid; padding-block:.1em; }
+#taiwan-cycle-nov26 .tw-foot { line-height:inherit; }
+@media (max-width:520px) {
+  #taiwan-cycle-nov26 .tw-distances ul { columns:1; }
+}
